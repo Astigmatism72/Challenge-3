@@ -1,6 +1,18 @@
 // Assignment code here
 var characters;
 var passwordLength;
+var generatePassword = function (length) {
+  let result = " ";
+  var passwordCharacters = characters;
+  const charactersLength = passwordLength;
+  for (let i = 0; i < length; i++) {
+    result += passwordCharacters.charAt(
+      Math.floor(Math.random() * charactersLength)
+    );
+  }
+
+  return result;
+};
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
@@ -90,20 +102,14 @@ function writePassword() {
     characters =
       "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ12345667890!@#$%^&*()-_=+[{]}|;:',<.>/?`~";
   }
+  console.log(characters);
+  window.alert(generatePassword(passwordLength));
   // debugger;
 }
-var generatePassword = function (length) {
-  let result = " ";
-  const charactersLength = passwordLength;
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
 
-  return result;
-};
 var password = generatePassword(passwordLength);
 var passwordText = document.querySelector("#password");
-console.log(8);
+
 passwordText.value = password;
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
